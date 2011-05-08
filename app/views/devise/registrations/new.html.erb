@@ -1,0 +1,30 @@
+<h3><%= "#{resource.class.name} Signup" %></h3>
+<div id="inline-form" class="portlet-content">
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name),:html => {:class => "form"}) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.text_field :email,:class=>"large    "%>
+    </div>
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password,:class=>"large" %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation,:class=>"large"  %>
+    </div>
+    <div class="field single_check">
+      <%= f.check_box :agree %>
+      <%#*<input id="user_agree" name="user[agree]" type="checkbox" value="1" />%>
+      <%= f.label :agree, "I understand and accept the terms and conditions."  %>
+    </div>
+    <div class="buttonrow">
+      <button onClick="javascript:form.submit();"><span>Sign up</span></button>
+      <button class="btn-sec"><span>Cancel</span></button>
+    </div>
+  <% end %>
+
+  <%= render :partial => "devise/shared/links" %>
+</div>

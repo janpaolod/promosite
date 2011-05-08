@@ -1,0 +1,35 @@
+<table class="data plain">
+  <tbody>
+    <td style="width: 250px;"><%= image_tag(@merchant.image.url || '/images/merchant.default.png', :size => "200x130") %></td>
+    <td>
+      <h2><%= @merchant.name %></h2>
+      <h4><%= @merchant.info %></h4>
+      <h4>Business Type:</h4>
+      <p class="classification" style="margin-left: 15px;">
+        <% @merchant.classifications.each do |c| %>
+          <%= c.name %>
+        <% end %>
+      </p>
+    </td>
+  </tbody>
+</table>
+
+<% if admin_signed_in? || @merchant == current_merchant %>
+  <%= link_to 'Edit', edit_merchant_path(@merchant) %>
+<% end %>
+
+<div class="portlet-header">
+  <h4>Details</h4>
+  <ul class="portlet-tab-nav">
+    <li class="portlet-tab-nav-active"><a href="#tab1">Branches</a></li>
+    <li ><a href="#tab2">Deals</a></li>
+  </ul>
+</div> <!-- .portlet-header -->
+<div class="portlet-content">
+  <div id="tab1" class="portlet-tab-content">
+    <%= render "branch_field" %>
+  </div>
+  <div id="tab2" class="portlet-tab-content">
+    <%= render "promo_field" %>
+  </div>
+</div>

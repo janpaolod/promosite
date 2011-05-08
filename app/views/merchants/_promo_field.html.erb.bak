@@ -1,0 +1,67 @@
+<h2>Deals</h2>
+<table class="data">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <% if admin_signed_in? || @merchant == current_merchant %>
+        <th>Code</th>
+      <% end %>
+      <th>Start</th>
+      <th>End</th>
+      <th>Period</th>
+      <th>Period End</th>
+      <th>Branches</th>
+      <th>Logo</th>
+      <% if admin_signed_in? || @merchant == current_merchant %>
+        <th>Price(a)</th>
+        <th>Price(d)</th>
+        <th>Quota</th>
+        <th>Active</th>
+        <th>Actions</th>
+        <th>Update</th>
+        <th>Tracking</th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @merchant.promos.each do |promo| %>
+      <tr>
+        <td>
+          <h4><%= link_to(promo.name, [promo.merchant, promo]) %></h4>
+          <p><%= promo.details %></p>
+        </td>
+        <% if admin_signed_in? || @merchant == current_merchant %>
+          <% if promo.manual_code.nil?  %>
+            <td><%= promo.random_code %></td>
+          <% else %>
+            <td><%= promo.manual_code %></td>
+          <% end %>
+        <% end %>
+        <td><%= promo.start %></td>
+        <td><%= promo.expired %></td>
+        <td><%= promo.period %></td>
+        <td><%= promo.period_end %></td>
+        <td><%= promo.branch.join(", ") %></td>
+        <td><%= image_tag promo.image.url if promo.image.url %></td>
+        <% if admin_signed_in? || @merchant == current_merchant %>
+          <td><%= promo.price_actual %></td>
+          <td><%= promo.price_discounted %></td>
+          <td><%= promo.quota %></td>
+          <td><%= promo.status ? image_tag("/images/carbon/silk/accept.png") : ""%></td>
+          <td><%= link_to(image_tag("/images/carbon/silk/cross.png"), merchant_promo_path(promo.merchant, promo), :confirm => 'Are you sure?', :method => :delete)  %></td>
+          <% unless promo.status %>
+            <td><%= link_to 'Edit', edit_merchant_promo_path(promo.merchant, promo) %></td>
+            <td><%= link_to 'Track', [promo.merchant, promo] %></td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if admin_signed_in? || @merchant == current_merchant %>
+  <br>
+  <p>
+    <%= link_to image_tag("/images/carbon/silk/add.png"), new_merchant_promo_path(@merchant) %>
+  </p>
+<% end %>

@@ -1,0 +1,8 @@
+#header
+  .wrapper.clearfix
+    %h1#title
+      %a{ :href=>"/" }
+        %img{ :src=>"/images/carbon/logo2.png", :alt=>"Twiggzy" }
+    .header-links
+      = render 'devise/menu/registration_items'
+      = render 'devise/menu/login_items'

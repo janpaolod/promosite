@@ -1,0 +1,39 @@
+<h2>Branches</h2>
+<table class="data">
+  <thead>
+    <tr>
+      <th>Branch</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>Contact Number</th>
+      <% if admin_signed_in? || @merchant == current_merchant %>
+        <th>Actions</th>
+        <th>Update</th>
+      <% end %>
+    </tr>
+  </thead> 
+  <tbody>
+    <% @merchant.branches.each do |branch| %>
+      <tr>
+        <td><%= branch.name %></td>
+        <td><%= branch.address %></td>
+        <td><%= branch.city.name %></td>
+        <td><%= branch.contact_number %></td>
+        <% if admin_signed_in? || @merchant == current_merchant %>
+          <td>
+            <%= link_to(image_tag("/images/carbon/silk/cross.png"), [branch.merchant, branch], :confirm => "Are you sure you want to delete this branch?\n* #{branch.name}", :method => :delete) %>
+          </td>
+          <td>
+            <%= link_to 'Edit', edit_merchant_branch_path(branch.merchant, branch) %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% if admin_signed_in? || @merchant == current_merchant %>
+  <br>
+  <p>
+    <%= link_to image_tag("/images/carbon/silk/add.png"), new_merchant_branch_path(@merchant) %>
+  </p>
+<% end %>

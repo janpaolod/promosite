@@ -1,0 +1,84 @@
+-if admin_signed_in? || @merchant == current_merchant
+  %h2= @promo.name
+  .deal-overview
+    .deal-status.round
+      -if @promo.rejected?
+        This deal was rejected by Twiggzy.
+      -elsif @promo.promo_valid?
+        This deal is still claimable.
+      -else
+        This deal can't be claimed anymore.
+    %h3 Overview
+    %strong Merchant:
+    = @promo.merchant.name
+    %br
+    %strong Claim count:
+    = @promo.promo_claims.count
+    %br
+    %strong Total discounts given so far:
+    = @promo.promo_claims.total_discounts
+    %br
+    -#
+      %strong Twiggzy's share
+      = @promo.promo_claims.filshare
+  .deal-details
+    %h3 Details
+    -if @promo.promo_claims.count > 0
+      %table{:cellspacing => 0, :cellpadding => 0}
+        %tr
+          %th Customer name
+          -unless @merchant == current_merchant
+            %th Customer email
+          %th Discount
+          %th Authentication code
+          -#
+            %th Redeemed?
+            %th Action
+        -@promo.promo_claims.each do |claim|
+          %tr
+            %td
+              =claim.user.first_name
+              =claim.user.last_name
+            -unless @merchant == current_merchant
+              %td= claim.user.email
+            %td= claim.discounts
+            %td= claim.manual_code
+            -#
+              %td= claim.redeemed.to_s
+              -unless claim.redeemed
+                %td= render :partial => 'redeem', :locals => {:user_id => claim.user_id}
+    -else
+      %strong No customer claimed this deal yet!
+-else
+  -if @promo.image.url
+    %img.deal-item-image-show#gallery{:src => @promo.image.url, }
+  -else
+    %img.deal-item-image-show#gallerydefault{:src => '/images/deal.default2.png'}
+  %br
+  %b Merchant:
+  = @promo.merchant.name
+  %br
+  %b Promo:
+  = @promo.name
+  %br
+  %b Details:
+  = @promo.details
+  %br
+  %b Valid on:
+  = @promo.coupon_validity_start
+  %b Until:
+  = @promo.coupon_validity_end
+  %br
+  -if @promo.promo_valid?
+    %b Remaining coupons:
+    = @promo.remaining
+    %br
+    %b Time left to claim:
+    .countdown
+      = @promo.countdown_time_left
+    %br
+  %br
+  %br
+  = render 'customer_form'
+  = link_to('Back', root_path)
+

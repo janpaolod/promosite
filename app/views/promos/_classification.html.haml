@@ -1,0 +1,5 @@
+-if @classifications
+  -classifications.each do |c|
+    = checked_or_unchecked( c, @promo )
+    %label{ :for => "classifications_#{c.id}"}= c.name
+    %br

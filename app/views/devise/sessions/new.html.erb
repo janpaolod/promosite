@@ -1,0 +1,24 @@
+<h3><%= "#{resource.class.name} Signin" %></h3>
+<div id="inline-form" class="portlet-content">
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name),:html => {:class => "form"}) do |f| %>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+    <% if devise_mapping.rememberable? -%>  
+        <div class="field single_check">
+          <%= f.check_box :remember_me %> <span>Remember Me</span>
+        </div>
+    <% end %>
+  <div class="buttonrow">
+    <button onClick="javascript:form.submit();"><span>Sign in</span></button>
+    <button class="btn-sec"><span>Cancel</span></button>
+  </div>
+<% end %>
+
+<%= render :partial => "devise/shared/links" %>
+</div>

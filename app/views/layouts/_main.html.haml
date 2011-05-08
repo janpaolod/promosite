@@ -1,0 +1,7 @@
+#main
+  %div{ :class => "portlet portlet" }
+    - unless flash.size.zero?
+      .portlet-content
+        - flash.each do |name, msg|
+          %p{ :class=>"message message-info message-closable" }= msg
+    = yield

@@ -1,0 +1,25 @@
+<div class="portlet-content" id="inline-form">
+<%= form_for([@merchant, @branch], :html => {:class => 'form label-top'}) do |f| %>
+  <%= render :partial => 'shared/errors', :locals => {:resource => @branch, :f => f} %>
+  <div class="field">                 
+    <%= f.label :name %><br />
+    <%= f.text_field :name%>
+  </div>
+  <div class="field">
+    <%= f.label :contact_number %><br />
+    <%= f.text_field :contact_number %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= label_tag :city %><br />
+    <%= select_tag :city, options_for_select(@cities,
+      :selected => @branch.city ? @branch.city.id : nil) %>
+  </div>
+  <div class="buttonrow">
+    <button type="submit"><span>Submit</span></button>
+  </div>
+<% end %>
+</div>

@@ -1,0 +1,84 @@
+= form_for([@merchant, @promo], :html => { :multipart => true, :class => "form label-top" } ) do |f|
+  = render :partial => 'shared/errors', :locals => {:resource => @promo}
+  .field
+    = f.label :product_name
+    %br
+    = f.text_field :name
+  -if admin_signed_in?
+  %div{ :class => "field upload clearfix" }
+    = f.label :image
+    %br
+    = f.file_field :image
+    = f.hidden_field :image_cache
+  .field
+    = f.label :details
+    %br
+    = f.text_area :details, :rows => 5, :value => "This coupon is for one-time use only and is not convertible to cash. Present this coupon to any participating branches and pay it directly." 
+  Leave it Blank if you want to generate the code randomly.
+  .field
+    = f.label :code
+    %br
+    = f.text_field :manual_code
+
+  .field.clearfix
+    .alignLeft
+      = f.label(:period_start, "Countdown start")
+      %br
+      = f.text_field :period_start, :class => "ui-date-picker"
+
+    .alignLeft
+      = f.label( :period_end, "Countdown end")
+      %br
+      =  f.text_field :period_end, :class => "ui-date-picker"
+  .field.clearfix
+    .alignLeft
+      = f.label( :coupon_validity_start, "Coupon validity start")
+      %br
+      = f.text_field :coupon_validity_start, :class => "ui-date-picker-no-time"
+
+    .alignLeft
+      = f.label( :coupon_validity_end, "Coupon validity end")
+      %br
+      = f.text_field :coupon_validity_end, :class => "ui-date-picker-no-time"
+  .field
+    = f.label :price_actual, 'Actual price'
+    %br
+    = f.text_field :price_actual
+  .field
+    = f.label :price_discounted, "Discounted price (discount must be #{Promo::MIN_DISCOUNT_RATE*100}% of actual price or higher)"
+    %br
+    = f.text_field :price_discounted
+  .field
+    = f.label :quota, "Quota (number of coupons to be given)"
+    %br
+    = f.text_field :quota
+
+  - if admin_signed_in?
+    .field.checkbox
+      = f.check_box :featured
+      %span Is this a featured promo?
+
+  .field.checkbox
+    = f.label(:branch, "Assign to Branch")
+    %br
+    -@merchant.branches.each do |branch|
+      -if @promo.branch_ids.include? branch.id
+        =check_box_tag "branches[#{branch.id}]", 1, true
+      -else
+        =check_box_tag "branches[#{branch.id}]"
+      = branch.name
+      %br
+    -#
+      %input{ :id => "promo_branch", :name => "promo[branch][]", :type => "checkbox", :value => branch.name }
+      = branch.name
+      %br
+      
+
+  .buttonrow
+    %button{:type => "submit", :name => 'submit'}
+      %span Submit
+    -if admin_signed_in? && @promo.persisted?
+      %button{:type => "submit", :name => 'activate'}
+        %span Activate
+      %button{:type => "submit", :name => 'reject'}
+        %span Reject

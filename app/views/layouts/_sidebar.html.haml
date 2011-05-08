@@ -1,0 +1,24 @@
+#sidebar
+  %h3 Featured Deals
+  #gallery
+    - @featured_promos.each do |fp|
+      -img = image_for_deal(fp)
+      =link_to image_tag(img), [fp.merchant, fp]
+
+  /%h3 Most Popular Deals
+  /#gallery
+  /  <a href="/images/carbon/lightbox/image1.jpg"><img src="/images/carbon/lightbox/thumb_image1.jpg" alt="Lightbox Image" /></a>
+  /  <a href="/images/carbon/lightbox/image2.jpg"><img src="/images/carbon/lightbox/thumb_image2.jpg" alt="Lightbox Image"  /></a>
+  /  <a href="/images/carbon/lightbox/image3.jpg"><img src="/images/carbon/lightbox/thumb_image3.jpg" alt="Lightbox Image"  /></a>
+  /  <a href="/images/carbon/lightbox/image4.jpg"><img src="/images/carbon/lightbox/thumb_image4.jpg" alt="Lightbox Image"  /></a>
+  /  <a href="/images/carbon/lightbox/image1.jpg"><img src="/images/carbon/lightbox/thumb_image1.jpg" alt="Lightbox Image"  /></a>
+  /  <a href="/images/carbon/lightbox/image5.jpg"><img src="/images/carbon/lightbox/thumb_image5.jpg" alt="Lightbox Image"  /></a>
+
+  /%h3 Most Popular Merchants
+  /#gallery
+  /  <a href="/images/carbon/lightbox/image1.jpg"><img src="/images/carbon/lightbox/thumb_image1.jpg" alt="Lightbox Image" /></a>
+  /  <a href="/images/carbon/lightbox/image2.jpg"><img src="/images/carbon/lightbox/thumb_image2.jpg" alt="Lightbox Image"  /></a>
+  /  <a href="/images/carbon/lightbox/image3.jpg"><img src="/images/carbon/lightbox/thumb_image3.jpg" alt="Lightbox Image"  /></a>
+  /  <a href="/images/carbon/lightbox/image4.jpg"><img src="/images/carbon/lightbox/thumb_image4.jpg" alt="Lightbox Image"  /></a>
+  /  <a href="/images/carbon/lightbox/image1.jpg"><img src="/images/carbon/lightbox/thumb_image1.jpg" alt="Lightbox Image"  /></a>
+  /  <a href="/images/carbon/lightbox/image5.jpg"><img src="/images/carbon/lightbox/thumb_image5.jpg" alt="Lightbox Image"  /></a>

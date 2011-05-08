@@ -1,0 +1,46 @@
+%div#inline-form.portlet-content
+  = form_for(@merchant, :html => { :multipart => true, :class => "form label-top"  }) do |f|
+    = render :partial => 'shared/errors', :locals => {:resource => @merchant}
+
+    -if params[:password]
+      =render :partial => 'devise/registrations/password_form', :locals => {:f => f}
+    -else
+      .field
+        = f.label :name
+        = f.text_field :name
+
+      .field
+        = f.label :email
+        = f.text_field :email
+
+      .field
+        = f.label :info
+        = f.text_area :info, :rows => 5
+
+      .field.checkbox
+        = label_tag :business_type
+        = render :partial => 'classifications/check_boxes', :locals => {:classified => @merchant}
+
+      - if admin_signed_in?
+        .field
+          = f.check_box :featured
+          = f.label :featured, "Is this a featured merchant?"
+
+      %div{ :class => "field upload clearfix" }
+        = f.label :logo
+        = f.file_field :image
+        = f.hidden_field :image_cache
+
+      .field
+        = f.label :password
+        = f.password_field :password
+
+      .field
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation
+
+    .buttonrow
+      %button{ :onClick => "javascript:form.submit();" }
+        %span Submit
+      %button{ :class => "btn-sec"}
+        %span Cancel

@@ -1,0 +1,16 @@
+!!! 5
+%html
+  %head
+    %title= title
+    = csrf_meta_tag
+    = render 'layouts/stylesheets'
+    = render 'layouts/javascripts'
+    = yield(:head)
+  %body
+    = render 'layouts/header'     
+    %div#page
+      = render 'layouts/megadropdown'
+      %div#body
+        = render 'layouts/main'
+        = render 'layouts/sidebar'
+      = render 'layouts/footer'

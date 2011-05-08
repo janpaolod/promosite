@@ -1,0 +1,53 @@
+<div class="portlet-header">
+  <h4>Merchants</h4>
+  <ul class="portlet-tab-nav">
+    <%= link_to_collection 'All', merchants_path %>
+    <% @classifications.each do |c| %>
+      <%= link_to_collection c.name, classified_merchants_path(:classification => c.permalink), c.permalink  %>
+    <% end %>
+  </ul>
+</div> <!-- .portlet-header -->
+
+<div class="portlet-content">
+  <div id="tab1" class="portlet-tab-content">
+
+    <%= will_paginate %>
+    
+    <table class="data plain" cellspacing="0" cellpadding="0">
+      <tbody>
+        <% @merchants.each do |merchant| %>
+          <tr class="odd">
+            <td style="width: 250px;"><%= image_tag(merchant.image.url || '/images/merchant.default.png', :size => "200x130") %></td>
+            <td>
+              <h3><%= link_to merchant.name, merchant %></h3>
+              <p><%= merchant.info %></p>
+              <p><strong>Business Type:</strong>
+                <% merchant.classifications.each do |c| %>
+                  <%= c.name %>
+                <% end %>
+              </p>
+            </td>
+            <td>
+              <% if admin_signed_in? %>
+                &nbsp;<%= link_to image_tag("/images/carbon/silk/pencil.png"), edit_merchant_path(merchant) %>&nbsp;
+                <%= link_to image_tag("/images/carbon/silk/cross.png"), merchant, :confirm => 'Are you sure?', :method => :delete %>
+              <% end %>
+              <% if merchant_signed_in? %>
+                <% if merchant == current_merchant %>
+                  &nbsp;<%= link_to image_tag("/images/carbon/silk/pencil.png"), edit_merchant_path(merchant) %>&nbsp;
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate %>
+  </div>
+</div>
+
+<% if admin_signed_in? %>
+  <p>
+    <%= link_to image_tag("/images/carbon/silk/add.png"), new_merchant_path %>
+  </p>
+<% end %>

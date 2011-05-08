@@ -1,0 +1,7 @@
+<% if classified.classification_ids.include?( check_box_item.id ) %>
+  <%= check_box_tag "classifications[#{check_box_item.id}]", 1, true %>
+<% else %>
+  <%= check_box_tag "classifications[#{check_box_item.id}]" %>
+<% end %>
+<%= check_box_item.name  %>
+<br />

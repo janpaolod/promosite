@@ -1,0 +1,16 @@
+.field
+  = f.label :gender
+  %br
+  = f.radio_button :gender, 1
+  Male
+  %br
+  = f.radio_button :gender, 0
+  Female
+.field
+  = f.label :address_line_1, "Address"
+  = f.text_field :address_line_1
+.field
+  = label_tag :city
+  = select_tag :city, options_for_select(@cities, :selected => @user.city ? @user.city.id : nil)
+
+

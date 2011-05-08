@@ -1,0 +1,3 @@
+-form_tag(redeem_merchant_promo_path(@promo.merchant, @promo), :method => 'put') do
+  = hidden_field_tag 'user_id', user_id
+  = submit_tag 'Redeem'

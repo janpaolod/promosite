@@ -1,0 +1,24 @@
+-if @promos.empty?
+  %h2 You haven't claimed any deal yet.
+  %p
+    =link_to 'Click here', root_url
+    to look for great deals!
+-else
+  #claimed-deals
+    %h1
+      Listing deals claimed by
+      =@current_user.first_name
+      =@current_user.last_name
+    %p
+      ="Hi #{@current_user.first_name}! The following table lists the deals you have claimed so far. To use them, print their corresponding coupons and present them the next time you go to their merchants. You can print a coupon by clicking the name of the deal you wish to redeem below. It will take you to that deal's page. From there, simply click the print button. Enjoy!"
+    %table{:cellspacing => 0, :cellpadding => 0}
+      %tr
+        %th Deal Name
+        %th Deal Validity
+        %th Authentication Code
+      -@promos.each do |deal|
+        %tr
+          %td
+            = link_to deal.promo.name, [deal.promo.merchant, deal.promo]
+          %td= deal.validity
+          %td= deal.manual_code || deal.random_code

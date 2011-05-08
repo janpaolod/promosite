@@ -1,0 +1,4 @@
+-if admin_signed_in? || @merchant == current_merchant
+  %h3 Edit Deal
+  #inline-form.portlet-content
+    = render :partial => 'form'

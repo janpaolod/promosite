@@ -1,0 +1,21 @@
+<h3><%= "#{resource.class.name} password recovery" %></h3>
+<div id="inline-form" class="portlet-content">
+
+    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => "form" }) do |f| %>
+      <%= devise_error_messages! %>
+        
+      <div class="field">
+          <%= f.label :email %>
+          <%= f.text_field :email, :class=>"large" %>        
+      </div>          
+        
+      <!-- <p><%= f.submit "Send me reset password instructions" %></p> -->
+      
+      <div class="buttonrow">
+        <button onClick="javascript:form.submit();"><span>Reset password</span></button>
+      </div>
+      
+    <% end %>
+
+    <%= render :partial => "devise/shared/links" %>
+</div>    

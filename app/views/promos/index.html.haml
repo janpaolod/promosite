@@ -1,0 +1,25 @@
+.portlet-header
+  %h4 Latest Deals
+  %ul.portlet-tab-nav
+    =link_to_collection 'All', root_path
+    -@classifications.each do |c|
+      =link_to_collection c.name, classified_promos_path(:classification => c.permalink), c.permalink
+.portlet-content
+  =will_paginate
+  -@promos.each do |deal|
+    .deal-item
+      - if deal.image.url 
+      .deal-item-image#gallery2
+        = link_to image_tag(deal.image.url || '/images/deal.default2.png'), [deal.merchant, deal]
+      .remaining-coupons.round
+        =deal.remaining
+        %span coupons left
+      .deal-details
+        %h3=link_to "#{deal.percent_discounted}% OFF! Only P#{deal.price_discounted} for #{deal.name} at #{deal.merchant.name}", [deal.merchant, deal]
+        -if admin_signed_in? || deal.merchant == current_merchant
+          %p
+            %strong Manage this deal:
+            = link_to('Show Records', [deal.merchant, deal])
+        .countdown.round
+          =deal.countdown_time_left
+  =will_paginate

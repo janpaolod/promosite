@@ -1,0 +1,10 @@
+<h3>Editing merchant</h3>
+<%= render 'form' %>
+
+<%= link_to 'Show', @merchant %> 
+<% unless params[:password] %>
+  | <%= link_to 'Back', merchants_path %>
+  | <%= link_to 'Change password', '?password=true' %>
+<% else %>
+  | <%= link_to 'Back', [:edit, @merchant] %>
+<% end %>

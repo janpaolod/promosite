@@ -1,0 +1,4 @@
+<% if @classifications %>
+  <%= render :partial => 'classifications/check_box_item', :collection => @classifications,
+    :locals => { classified: classified } %>
+<% end %>

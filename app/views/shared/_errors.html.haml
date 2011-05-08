@@ -1,0 +1,8 @@
+- if resource.errors.any?
+  #error_explanation
+    %h4
+      = pluralize(resource.errors.count, "error")
+      prohibited this merchant from being saved:</h4>
+    %ul
+      - resource.errors.full_messages.each do |msg|
+        %li= msg

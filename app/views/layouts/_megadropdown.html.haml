@@ -1,0 +1,16 @@
+#megadropdown
+  = puts request.path
+  %ul
+    %li{:class => ( controller.controller_path == 'promos' && !['/my_promos', '/my_tracker'].include?(request.path) ? :current : nil)}
+      = link_to 'Deals', root_path
+    %li{:class => ( controller.controller_path == 'merchants' ? :current : nil)}
+      = link_to 'Merchants', merchants_path
+    -if user_signed_in?
+      %li{:class => ( request.path == '/my_promos' ? :current : nil)}
+        = link_to 'My Deals', claimed_promos_path
+    -if merchant_signed_in? || admin_signed_in?
+      %li{:class => ( request.path == '/my_tracker' ? :current : nil)}
+        = link_to 'My Tracker', promo_records_path
+    %li{:class => ( request.path == '/how_it_works' ? :current : nil)}
+      %a{ :href => '/how_it_works'} How It Works
+

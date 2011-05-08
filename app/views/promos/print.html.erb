@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <%#= stylesheet_link_tag 'print' %>
+    <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js' %>
+    <%= javascript_include_tag 'rails' %>
+    <%= javascript_include_tag 'jquery.printPage.js' %>
+    <%= javascript_include_tag 'print.js' %>
+  </head>
+  <body>
+
+    <div id="container">
+      <div style="width: 100%; margin: 0 auto;">
+        <table style="width: 483; border-style: dashed; border-width: 2;">
+          <tr>
+            <td>
+              <%= image_tag "deal.default2.png" %>
+            </td>
+            <td style="width: 350; text-align: center;">
+              <b>TWIGGZY COUPON</b><br />
+              <span style="font-size: 8;">www.twiggzy.com<span>
+                </td>
+                <td>
+                  <% unless @promo.merchant.image.url %>
+                    <%= image_tag "merchant.default.png" %>
+                  <% else %>
+                    <%= @promo.merchant.image.url %>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <center style="font-size: 10;">
+                    <b><%= @promo.merchant.name %></b> is exclusively offering <% @promo.promo_claims.each do |claim| %><b><u><%= claim.user.first_name %> <%= claim.user.last_name %></b></u><% end %>
+                    <br />
+                    <b><%= @promo.name %></b> from the original price of <b><%= @promo.price_actual %></b> to discounted price of <b><%= @promo.price_discounted %></b>.
+                    <br />
+                    <% if user_signed_in? && current_user.claimed?(@promo) %>
+                      CODE: 
+                      <% if @promo.manual_code.nil? %>
+                        <b><%= @promo.random_code %></b>
+                      <% else %>
+                        <b><%= @promo.manual_code %></b>
+                      <% end %>
+                    <% end %>
+                  </center>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" style="font-size: 9;">
+                  <br />
+                  &nbsp; The deal is valid only from <b><%= @promo.coupon_validity_start %></b> to <b><%= @promo.coupon_validity_end %></b>.<br />
+                  &nbsp; Selected branch: 
+                  <b>
+                    <% @merchant.branches.each do |branch| %>
+                      <%= branch.name %>, <%= branch.address %>, <%= branch.contact_number %>
+                    <% end %>
+                  </b>
+                </td>
+              </tr>
+            </table>
+          </div>
+      </div>
+
+  </body>
+</html>
+

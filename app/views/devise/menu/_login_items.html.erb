@@ -1,0 +1,41 @@
+<% if user_signed_in? || merchant_signed_in? %>
+
+
+  <% if user_signed_in? %>
+    <%= link_to('Signout', destroy_user_session_path)%> )
+  <% else %>
+    <%= current_merchant.name %>
+    ( <b><%= link_to('View profile', merchant_path(current_merchant)) %></b> |
+    <b><%= link_to('Signout', destroy_merchant_session_path) %></b> )
+  <% end %>
+
+
+<% else %>
+
+
+  <% unless admin_signed_in? %>
+    <span class="grp">
+      <strong class="title">Shopper</strong>
+      <%= link_to('Login', new_user_session_path) %>
+      <span class="separator">/</span>
+      <%= link_to('Registration', new_user_registration_path) %>
+    </span>
+    
+    <span class="grp">
+        <strong class="title">Merchant</strong>
+        <%= link_to('Login', new_merchant_session_path) %>
+        <span class="separator">/</span>        
+        <%= link_to('New', new_merchant_registration_path) %>
+    </span>
+    
+  <% else %>
+    <span class="grp">
+      <b><%= link_to 'Admin signout', destroy_admin_session_path %></b>
+    </span>
+    
+
+  <% end %>
+
+
+
+<% end %>

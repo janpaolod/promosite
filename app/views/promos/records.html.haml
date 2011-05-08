@@ -1,0 +1,42 @@
+-if merchant_signed_in?
+  -if @promos.empty?
+    %h2 Missing deal
+    %p
+      You haven't created any deal yet.
+      =link_to 'Click here ', new_merchant_promo_path(current_merchant)
+      to create one.
+  -else
+    #claimed-deals
+      %h1
+        Listing deals owned by
+        = current_merchant.name
+      %table{:cellspacing => 0, :cellpadding => 0}
+        %tr
+          %th Deal Name
+          %th Claim Period Status
+          %th Authentication Code
+        -@promos.each do |deal|
+          %tr
+            %td= link_to deal.name, [deal.merchant, deal]
+            %td{:class => deal.status}
+              =deal.status.to_s.humanize
+            %td= deal.manual_code
+-elsif admin_signed_in?
+  -if @promos.empty?
+    %h2 No pending deals
+    %p There are no pending deals as of the moment.
+  -else
+    #claimed-deals
+      %h1
+        Listing all pending deals
+      %table{:cellspacing => 0, :cellpadding => 0}
+        %tr
+          %th Deal Name
+          %th Claim Period Status
+          %th Authentication Code
+        -@promos.each do |deal|
+          %tr
+            %td= link_to deal.name, [:edit, deal.merchant, deal]
+            %td{:class => deal.status}
+              =deal.status.to_s.humanize
+            %td= deal.manual_code

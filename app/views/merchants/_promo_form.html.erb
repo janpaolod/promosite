@@ -1,0 +1,74 @@
+<h4>Add a Promo:</h4>
+<%= form_for([@merchant, @promo], :html => { :multipart => true, :class => "form label-top"  } ) do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <% if admin_signed_in? %>
+    <%= render :partial => 'promos/classification' %>
+  <% end %>
+  <div class="field upload clearfix">
+    <%= f.label :image %><br />
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+  <div class="field">
+    <%= f.label :details %><br />
+    <%= f.text_area :details, :rows => 5 %>
+  </div>
+  <div class="field">
+    <%= f.label :authenticator %><br />
+    <%= f.text_field :manual_code %>
+  </div>
+  <div class="field">
+    <%= f.label :start %><br />
+    <%= f.date_select :start, :start_year => 2010, :end_year => 2020 %>
+  </div>
+  <div class="field">
+    <%= f.label :end %><br />
+    <%= f.date_select :expired, :start_year => 2010, :end_year => 2020 %>
+  </div>
+  <div class="field">
+    <%= f.label :period %><br />
+    <%= f.datetime_select :period, :start_year => 2010, :end_year => 2020 %>
+  </div>
+  <div class="field">
+    <%= f.label :period_end %><br />
+    <%= f.datetime_select :period_end, :start_year => 2010, :end_year => 2020 %>
+  </div>
+  <% if admin_signed_in? %>
+    <div class="field">
+      <%= f.label :status %><br />
+      <%= f.radio_button :status, 1 %>Active
+      <%= f.radio_button :status, 0 %>Inactive
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :price_actual %><br />
+    <%= f.text_field :price_actual  %>
+  </div>
+  <div class="field">
+    <%= f.label :price_discounted %><br />
+    <%= f.text_field :price_discounted %>
+  </div>
+  <div class="field">
+    <%= f.label :quota %><br />
+    <%= f.text_field :quota %>
+  </div>
+  <% if admin_signed_in? %>
+    <div class="field">
+      <%= f.check_box :featured %>
+      <%= f.label :featured, "Is this a featured promo?" %>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :branch %><br />
+    <% for branch in @merchant.branches %>
+      <input id="promo_branch" name="promo[branch][]" type="checkbox" value="<%= branch.name %>" />
+      <%= branch.name %><br />
+    <% end %>
+  </div>
+  <div class="action">
+    <%= f.submit %>
+  </div>
+<% end %>

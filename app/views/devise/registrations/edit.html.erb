@@ -1,0 +1,43 @@
+<h2>Edit <%= "#{resource_name.to_s.humanize} #{'Profile' if resource_name.match(/user/i)}" %></h2>
+<div id="inline-form" class="portlet-content">
+  <%= devise_error_messages! %>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put,:class => "form label-top" }) do |f| %>
+
+    <% if params[:new] %>
+      <%= render :partial => 'devise/registrations/name_form', :locals => {:f => f} %>
+      <% if user_signed_in? %>
+        <%= render :partial => 'devise/registrations/user_details_form', :locals => {:f => f} %>
+      <% end %>
+
+    <% elsif params[:password]%>
+      <%= render :partial => 'devise/registrations/password_form', :locals => {:f => f} %>
+
+    <% else %>
+      <%= render :partial => 'devise/registrations/name_form', :locals => {:f => f} %>
+      <% if user_signed_in? %>
+        <%= render :partial => 'devise/registrations/user_details_form', :locals => {:f => f} %>
+      <% end %>
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+      </div>
+      <div class="field">
+        <%= f.label :current_password %><i>(required if name is being updated)</i><br />
+        <%= f.password_field :current_password %>
+      </div>
+    <% end %>
+
+    <div class="buttonrow">
+      <button onClick="javascript:form.submit();"><span>Update</span></button>
+    </div>
+  <% end %>
+
+  <% unless params[:new] || params[:password] %>
+    <p><%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+    <p><%= link_to "Change password", '?password=true' %></p>
+  <% end %>
+
+  <% unless params[:new] %>
+    <%= link_to "Back", :back %>
+  <% end %>
+</div>

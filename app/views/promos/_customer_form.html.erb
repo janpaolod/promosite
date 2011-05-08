@@ -1,0 +1,32 @@
+<% if user_signed_in? %>
+  <% if current_user.claimed?(@promo) %>
+    <div class="print_button">
+      <%= link_to 'Print', print_merchant_promo_path, :class => "btnPrint" %>
+    </div>
+    <div class="popups">
+      <%= link_to 'Coupon Preview', print_merchant_promo_path %>
+    </div>
+  <% else %>
+    <div class="popups">
+      <%= link_to 'Coupon Preview', print_merchant_promo_path %>
+    </div>
+  <% end %>
+<% end %>
+
+<% if @promo.promo_valid? %>
+  <% if user_signed_in? %>
+    <% unless current_user.claimed?(@promo) %>
+      <p>This deal can still be claimed. Would you like to claim it?</p>
+      <%= form_tag claim_merchant_promo_path(@promo.merchant, @promo) do %>
+        <%= submit_tag 'Claim', :confirm => "Are you sure you want to claim the following deal?\n* #{@promo.name}" %>
+      <% end %>
+    <% end %>
+  <% else %>
+    You need to be
+    <%= link_to 'signed in', new_user_session_path %>
+    to claim this deal.
+  <% end %>
+<% else %>
+  <p>Sorry! This deal cannot be claimed anymore!</p>
+<% end %>
+

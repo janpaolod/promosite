@@ -1,0 +1,48 @@
+%h2
+  Deals
+  - if admin_signed_in? || @merchant == current_merchant
+    = link_to image_tag("/images/carbon/silk/add.png"), new_merchant_promo_path(@merchant)
+-@merchant.promos.desc(:countdown_period_start).each do |promo|
+  .deal-item-image-list#gallery
+    -image = promo.image.url || "/images/deal.default2.png"
+    =link_to image_tag(image), image
+  .merchant-deal-item
+    %h3
+      -if promo.rejected?
+        %span{:style=>"color: red"}REJECTED: 
+      =link_to("#{promo.percent_discounted}% OFF! Only P#{promo.price_discounted} for #{promo.name}", [promo.merchant, promo])
+    %p=promo.details
+    %p
+      %strong Claimable on:
+      =promo.period_start
+      %strong Until:
+      =promo.period_end
+    %p
+      %strong Coupon valid on:
+      =promo.coupon_validity_start
+      %strong Until:
+      =promo.coupon_validity_end
+    %p
+      %strong Participating branches:
+      =promo.branches.collect{ |b| b.name }.join(', ')
+    -if admin_signed_in? || @merchant == current_merchant
+      %p
+        %strong Actual Price:
+        =promo.price_actual
+        %strong Discounted Price:
+        =promo.price_discounted
+        %strong Quota:
+        =promo.quota
+      %p
+        %strong Code:
+        =promo.manual_code || promo.random_code
+      %p
+        %strong= promo.rejected? ? "Action:" : "Actions"
+        - unless promo.rejected?
+          -if promo.editable?
+            = link_to image_tag("/images/carbon/silk/pencil.png"),   [:edit, promo.merchant, promo]
+          -else
+            <img src="/images/carbon/silk/pencil.png">
+        = link_to image_tag("/images/carbon/silk/cross.png"), [promo.merchant, promo], :confirm => "Are you sure you want to delete this deal?\n* #{promo.name}", :method => :delete
+        -unless promo.editable?
+          (This promo is active. Therefore it cannot be <img src="/images/carbon/silk/pencil.png">)
