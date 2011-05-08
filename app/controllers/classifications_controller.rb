@@ -1,6 +1,7 @@
 class ClassificationsController < ApplicationController
   before_filter :authenticate_admin!
   
+  
   # GET /classifications
   # GET /classifications.xml
   def index

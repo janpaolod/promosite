@@ -3,7 +3,7 @@ class Classification
   field :name,      :type => String
   field :permalink, :type => String
   
-  references_many :promos
+  references_many :promos #try promos to make merchants classification as reference
   references_many :merchants, stored_as: :array, :inverse_of => :classifications
   
   validates :name,
