@@ -1,0 +1,48 @@
+#container {
+   margin: 0 auto; 
+   font-family: Arial, Helvetica, sans-serif; 
+}
+
+.coupon {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.coupon_box {
+  width: 500;
+  border-style: dashed;
+  border-width: 2;
+}
+
+#block1 {
+  width: 100;
+}
+
+#block2 {
+  width: 300;
+  text-align: center;
+}
+
+#block3 {
+  width: 100;
+}
+
+#center {
+  width: 500;
+  font-size: 10;
+}
+
+#bottom {
+  font-size: 9;
+  text-align: left;
+}
+
+#filsale{
+  font-size: 14;
+}
+
+#www {
+  font-size: 8;
+}
+
+

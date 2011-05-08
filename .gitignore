@@ -1,0 +1,13 @@
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/**/*
+**.swp
+**.swo
+*.*~
+*.*~~
+nbproject/*
+nbproject/**/*
+*.log
+public/uploads/**/*
+.rvmrc

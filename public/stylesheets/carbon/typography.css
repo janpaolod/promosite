@@ -1,0 +1,261 @@
+
+
+
+h1,h2,h3,
+h4,h5,h6		{ color: #111; margin-bottom: .75em; }
+
+h1 				{ font-size: 24px; line-height: 1em; font-weight: bold; }
+h2 				{ font-size: 20px; font-weight: normal; color: #222; margin-bottom: 1em }
+h3 				{ font-size: 16px; font-weight: bold; color: #333; line-height: 1; margin-bottom: .75em }
+h4 				{ font-size: 14px; color: #666; line-height: 1.25; margin-bottom: 1.25em }
+h5 				{ font-size: 12px; font-weight: bold; margin-bottom: 1.5em }
+h6 				{ font-size: 11px; font-weight: bold }
+
+p           	{ margin: 0 0 1.5em }
+p.last      	{ margin-bottom: 0 }
+img         	{ border: none; }
+
+ul, ol			{ margin-left: 28px; margin-bottom: 1.5em; }
+ul li			{ list-style-type: square; }
+
+dl          	{ margin: 0 0 1.5em 0 }
+dl dt       	{ font-weight: bold }
+dd          	{ margin-left: 1.5em }
+
+abbr, 
+acronym     	{ border-bottom: 1px dotted #666 }
+address     	{ margin-top: 1.5em; font-style: italic }
+del         	{ color:#666 }
+sup				{ font-size: 9px; vertical-align:top; }
+
+a				{ color: #358; text-decoration: none; border-bottom-style: dotted; }
+a:visited		{ color: #667 }
+a:focus, 
+a:hover     	{ color: #A5073D }
+
+a:active,
+a:focus { outline: none !important; noFocusLine: expression(this.onFocus=this.blur()) }
+
+blockquote  	{ margin: 1.5em; color: #666; font-style: italic }
+strong      	{ font-weight: bold }
+em,dfn      	{ font-style: italic; background: #ffc }
+dfn         	{ font-weight: bold }
+pre,code    	{ margin: 1.5em 0; white-space: pre }
+pre,code,tt 	{ font: 12px 'andale mono', 'monotype.com', 'lucida console', monospace; line-height: 1.5 } 
+tt         		{ display: block; margin: 1.5em 0; line-height: 1.5 }
+
+table.data { width: 100%; font-size: 11px; border: 0; table-layout: auto; border-collapse: collapse;}
+
+	 table.data thead th
+	 {
+	 	font-size: 12px;
+		font-weight: bold;
+		text-align: left;
+		background: #fff;
+		border-bottom: 1px solid #bfbfbf;
+	}		
+	
+	th.header { background: url(/images/carbon/tables/sorter-bg.gif) no-repeat 0% 50% !important; padding-left: 20px !important; cursor: pointer; }
+	
+	th.headerSortDown { background-image: url(/images/carbon/tables/sorter-desc.gif) !important; } 
+	
+	th.headerSortUp { background-image: url(/images/carbon/tables/sorter-asc.gif) !important; }
+	
+			table.data tbody tr td { background: #FFF; border-bottom: 1px dotted #DDD; }
+			table.plain tbody tr td { background: #FFF; border-bottom: 1px dotted #DDD; }
+		
+			table.data th { padding: 10px 5px; }
+			table.data tbody td { padding: 20px 5px; vertical-align: middle;  }
+			
+			table.data tr.even td { background: #F1F1F1; }
+
+button { 
+	position: relative;
+	border: 0; 
+	padding: 0;
+	cursor: pointer;
+	overflow: visible; /* removes extra side padding in IE */
+}
+
+button::-moz-focus-inner {
+	border: none; 
+	padding: none; /* overrides extra padding in Firefox */
+}
+
+button span { 
+	position: relative;
+	display: block; 
+	white-space: nowrap;	
+	margin: 0;
+	line-height: 1;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	/* Safari and Google Chrome only - fix margins */
+	button span {
+		margin-top: -1px;
+	}
+}
+
+
+/* OPTIONAL BUTTON STYLES for applying custom look and feel: */	
+
+button,
+button span
+{
+	background: transparent url(/images/carbon/button_sprite.png) no-repeat;
+}	
+
+button,
+button .btn-pri { 
+	padding: 0 15px 0 0; 
+	margin-right:5px; 
+	text-align: center; 
+	background-position: right -4.14em !important; 
+	line-height: 1 !important;
+	font-size: 12px;
+}
+	
+button span,
+button .btn-pri span {
+	font-family: arial, sans-serif;
+	padding: 9px 0 9px 15px; 
+	/*height:30px;*/ 
+	/*font-size:12px;*/
+	letter-spacing: 0.025em;
+	line-height: 1; 
+	font-weight: bold;
+	font-style: normal;
+	background-position: left top; 
+	color:#FFF; 
+}
+
+button.btn-sec { background-position: right -12.5em !important; }
+
+button.btn-sec span { background-position: left -8.3em !important; }
+
+/* clean green (inspired by okcupid.com)
+*******************************************************************************/
+button.clean-green {
+  background: #7fbf4d;
+  background: -moz-linear-gradient(0% 100% 90deg,#63a62f, #7fbf4d);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#7fbf4d), to(#63a62f));
+  border: 1px solid #63a62f;
+  border-width: 1px 1px 0 1px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: inset 0 1px 0 0 #96ca6d;
+  -webkit-box-shadow: inset 0 1px 0 0 #96ca6d;
+  box-shadow: inset 0 1px 0 0 #96ca6d;
+  color: #fff;
+  font-family: "lucida grande", sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 1;
+  padding: 7px 0 8px 0;
+  text-align: center;
+  text-shadow: 0 -1px 0 #4c9021;
+  width: 50px;
+	height: 26px;
+}
+
+button.clean-green:hover {
+  background: #5a962c;
+  background: -moz-linear-gradient(0% 100% 90deg,#5a962c, #72ac45);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#72ac45), to(#5a962c));
+}
+
+button.clean-green:active {
+  background: #7fbf4d;
+  background: -moz-linear-gradient(0% 100% 90deg,#7fbf4d, #63a62f);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#63a62f), to(#7fbf4d));
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-width: 0 1px 1px 1px;
+  padding: 8px 0 7px 0;
+}
+
+button.clean-main {
+  background: #7fbf4d;
+  background: -moz-linear-gradient(0% 100% 90deg,#63a62f, #7fbf4d);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#7fbf4d), to(#63a62f));
+  border: 1px solid #63a62f;
+  border-width: 1px 1px 0 1px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: inset 0 1px 0 0 #96ca6d;
+  -webkit-box-shadow: inset 0 1px 0 0 #96ca6d;
+  box-shadow: inset 0 1px 0 0 #96ca6d;
+  color: #fff;
+  font-family: "lucida grande", sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 1;
+  padding: 7px 0 8px 0;
+  text-align: center;
+  text-shadow: 0 -1px 0 #4c9021;
+  width: 150px;
+	height: 26px;
+}
+
+button.clean-main:hover {
+  background: #5a962c;
+  background: -moz-linear-gradient(0% 100% 90deg,#5a962c, #72ac45);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#72ac45), to(#5a962c));
+}
+
+button.clean-main:active {
+  background: #7fbf4d;
+  background: -moz-linear-gradient(0% 100% 90deg,#7fbf4d, #63a62f);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#63a62f), to(#7fbf4d));
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-width: 0 1px 1px 1px;
+  padding: 8px 0 7px 0;
+}
+
+/* clean gray
+*******************************************************************************/
+button.clean-gray {
+  background: #eee;
+  background: -moz-linear-gradient(0% 100% 90deg, #bfbfbf, #eee);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#eee), to(#bfbfbf));
+  border: 1px solid #ccc;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: inset 0 0 5px #f5f5f5;
+  -webkit-box-shadow: inset 0 0 5px #f5f5f5;
+  box-shadow: inset 0 0 5px #f5f5f5;
+  color: #333;
+  font-family: "lucida grande", sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  padding: 8px 0;
+  text-align: center;
+  text-shadow: 0 1px 0px #eee;
+  width: 150px;
+  height: 26px;
+}
+
+button.clean-gray:hover {
+  background: #dfdfdf;
+  background: -moz-linear-gradient(0% 100% 90deg, #aaa, #dfdfdf);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#dfdfdf), to(#aaa));
+  -moz-box-shadow: inset 0 0 5px #e5e5e5;
+  -webkit-box-shadow: inset 0 0 5px #e5e5e5;
+  box-shadow: inset 0 0 5px #e5e5e5;
+}
+
+button.clean-gray:active {
+  background: #bfbfbf;
+  background: -moz-linear-gradient(0% 100% 90deg, #eee, #bfbfbf);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#bfbfbf), to(#eee));
+}
+
+

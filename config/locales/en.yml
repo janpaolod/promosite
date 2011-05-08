@@ -1,0 +1,9 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  promo_mailer:
+    activate:
+      subject: Your deal is now active.
+    reject:
+      subject: Your deal was rejected.
