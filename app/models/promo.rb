@@ -220,7 +220,7 @@ class Promo
   end
 
   def valid_countdown_period_start
-    if countdown_period_start < _min_period_start
+    if countdown_period_start > _min_period_start
       errors.add(:countdown_period_start, 'must be at least 1 day from now')
     end
   end
