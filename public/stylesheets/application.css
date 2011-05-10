@@ -25,12 +25,18 @@ h1 a {
   text-decoration: none;
 }
 
+h3#dealname{
+	  font-size: 160%;
+	  font-weight: bold;
+	
+}
+
 div.deal-item-image-list{
   display: block;
   float: left;
   overflow: hidden;
   width: 200px;
-  height: 130px;
+  height: 140px;
 }
 
 div#menu ul {
@@ -53,7 +59,6 @@ div#menu ul li a {
 li :hover {
   /*background: grey;*/
 }
-
 
 div#admin_menu ul {
   #width: 500px;
@@ -136,9 +141,27 @@ td.image{
 
 /* Sorry, this could be messy. :-) */
 
+table#box{
+	  background: #ccff99;
+      color: #003300;
+	  font-weight: bold;
+	  padding: 9px;
+	  width: 300px;
+	  margin-left: 0px;
+}
+
+td#box{
+	border: none;
+}
+
+.grableft{
+	border: none;
+}
+
 .deal-item{
   clear : both;
-  height: 190px;
+  height: 180px;
+  margin-top: 25px;
 }
 
 .merchant-deal-item{
@@ -146,6 +169,7 @@ td.image{
 }
 
 .deal-item-image{
+  position: relative;
   display: block;
   float: left;
   overflow: hidden;
@@ -158,7 +182,7 @@ td.image{
   float: left;
   overflow: hidden;
   width: 200px;
-  height: 130px;
+  height: 160px;
 }
 
 .deal-item-image-show{
@@ -211,6 +235,33 @@ td.image{
   font-weight: bold;
   padding: 20px;
   float: right;
+}
+
+.remaining-coupons2{
+  overflow: hidden;
+  margin-left: 30px;
+  display: block;
+  width: 100px;
+  float: right;
+}
+
+.remaining-coupons3{
+  text-align: center;
+  width: 70px;
+  color: #fff;
+  background: #a5073d;
+  font-weight: bold;
+  font-size: 145%;
+  padding: 15px;
+}
+.grab-coupons{
+  text-align: center;
+  width: 80px;
+  color: #fff;
+  background: #ffcc66;
+  font-size: 128%;
+  font-weight: bold;
+  padding: 10px;
 }
 
 .deal-status{

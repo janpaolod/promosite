@@ -746,12 +746,12 @@ GALLERY
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 #gallery img
 {
-	width: 180px; height: 110px; padding: 1px; margin: 2px; border: 1px solid #CCC;
+	width: 180px; height: 120px; padding: 1px; margin: 2px; border: 1px solid #CCC;
 }
 
 #gallery2 img
 {
-	width: 220px; height: 150px; padding: 1px; margin: 2px; border: 1px solid #CCC;
+	position: relative; width: 220px; height: 150px; padding: 1px; margin: 2px; border: 1px solid #CCC;
 }
 
 #gallerydefault img
