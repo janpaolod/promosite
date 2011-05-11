@@ -8,23 +8,10 @@
   =will_paginate
   -@promos.each do |deal|
     .deal-item
+      %h3#dealname=link_to "Only P#{deal.price_discounted} for #{deal.name} at #{deal.merchant.name}", [deal.merchant, deal]
       - if deal.image.url 
-      .deal-item-image#gallery2
-        = link_to image_tag(deal.image.url || '/images/deal.default2.png'), [deal.merchant, deal]
-      .remaining-coupons2.round
-        .remaining-coupons3.round
-          =deal.remaining
-          %span coupons left
-        %br
-        .grab-coupons.round
-          =link_to "claim it!", [deal.merchant, deal]
-      .deal-details
-        %h3=link_to "Only P#{deal.price_discounted} for #{deal.name} at #{deal.merchant.name}", [deal.merchant, deal]
-        -if admin_signed_in? || deal.merchant == current_merchant
-          %p
-            %strong Manage this deal:
-            = link_to('Show Records', [deal.merchant, deal])
-        %table#box.round
+      .deal-index.round  
+        %table#box
           %tr
             %td#box
               %b Actual:
@@ -33,16 +20,34 @@
             %td#box
               %b Savings:
           %tr
-            %td#box
+            %td#box2
               %b= "P#{deal.price_actual}"
-            %td#box
+            %td#box2
               %b= "#{deal.percent_discounted}%"
-            %td#box
+            %td#box2
               %b= "P#{deal.price_actual - deal.price_discounted}"
-        %table
+        %table#box     
           %tr
             %td#box
               %b Time to claim:
-        .countdown.round
-          =deal.countdown_time_left
+          %tr
+            %td
+            .countdown.index.round
+              =deal.countdown_time_left
+      .remaining-show2.round
+        %table
+          %tr
+            %td#box4
+              = "#{deal.remaining} coupons left"
+            %td#box3.round
+              =link_to "claim it!", [deal.merchant, deal]
+      .deal-item-image#gallery2
+        = link_to image_tag(deal.image.url || '/images/deal.default2.png'), [deal.merchant, deal]
+      .remaining-coupons2.round
+        %br
+      .deal-details2
+        -if admin_signed_in? || deal.merchant == current_merchant
+          %p
+            %strong Manage this deal:
+            = link_to('Show Records', [deal.merchant, deal])
   =will_paginate

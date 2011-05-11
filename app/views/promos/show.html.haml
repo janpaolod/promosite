@@ -50,35 +50,65 @@
     -else
       %strong No customer claimed this deal yet!
 -else
+  %h3#dealnameshow
+    %b 
+    = " Only P#{@promo.price_discounted} for #{@promo.name} at #{@promo.merchant.name}"
   -if @promo.image.url
-    %img.deal-item-image-show#gallery{:src => @promo.image.url, }
+    .deal-item-image-show#gallery
+      %img{:src => @promo.image.url, }
   -else
-    %img.deal-item-image-show#gallerydefault{:src => '/images/deal.default2.png'}
+    .deal-item-image-show#gallery2
+      %img{:src => '/images/deal.default2.png'}
+  .deal-show.round  
+    %table#box.round
+      %tr
+        %td#box
+          %b Actual:
+        %td#box
+          %b Discount:
+        %td#box
+          %b Savings:
+      %tr
+        %td#box
+          %b= "P#{@promo.price_actual}"
+        %td#box
+          %b= "#{@promo.percent_discounted}%"  
+        %td#box
+          %b= "P#{@promo.price_actual - @promo.price_discounted}"
+    %table#box
+      %tr
+        %td
+          %b Time left to claim:
+      %tr
+        %td    
+        .countdown.index.round
+          = @promo.countdown_time_left
+  .remaining-show.round
+    %table#box
+      %tr
+        %td  
+        -if @promo.promo_valid? 
+          = "#{@promo.remaining} coupons left"  
   %br
-  %b Merchant:
-  = @promo.merchant.name
   %br
-  %b Promo:
-  = @promo.name
-  %br
-  %b Details:
-  = @promo.details
-  %br
-  %b Valid on:
-  = @promo.coupon_validity_start
-  %b Until:
-  = @promo.coupon_validity_end
-  %br
-  -if @promo.promo_valid?
-    %b Remaining coupons:
-    = @promo.remaining
+  %h3#details
+    %b Details:
+    %p
+    = @promo.details
+    %p
+    %b Coupon is valid on:
+    = @promo.coupon_validity_start
+    %b Until:
+    = @promo.coupon_validity_end
     %br
-    %b Time left to claim:
-    .countdown
-      = @promo.countdown_time_left
+  %p#remember
     %br
-  %br
-  %br
+    %b Remember: Print the Coupon and present it to any participating branches. 
+    %br
+    %b#remember Pay the full amount of the discounted price directly to the Merchant.
+    %br
   = render 'customer_form'
-  = link_to('Back', root_path)
+  .div#back
+    %br
+    = link_to('Back', root_path)
 

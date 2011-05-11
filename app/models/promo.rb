@@ -39,7 +39,7 @@ class Promo
   field :_min_period_start, :type => Time, :default => 1.days.from_now
 
   # Validations
-  validates :name,                   :presence => true, :uniqueness => true
+  validates :name,                   :presence => true
   validates :details,                :presence => true
   validates :countdown_period_start, :presence => true
   validates :countdown_period_end,   :presence => true

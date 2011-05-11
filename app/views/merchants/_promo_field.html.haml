@@ -3,10 +3,10 @@
   - if admin_signed_in? || @merchant == current_merchant
     = link_to image_tag("/images/carbon/silk/add.png"), new_merchant_promo_path(@merchant)
 -@merchant.promos.desc(:countdown_period_start).each do |promo|
-  .deal-item-image-list#gallery
+  .deal-item-image-list#gallery3
     -image = promo.image.url || "/images/deal.default2.png"
     =link_to image_tag(image), image
-  .merchant-deal-item
+  .merchant-deal-item#details
     %h3
       -if promo.rejected?
         %span{:style=>"color: red"}REJECTED: 

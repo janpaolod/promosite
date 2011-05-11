@@ -1,18 +1,24 @@
 <% if user_signed_in? %>
   <% if current_user.claimed?(@promo) %>
-    <div class="print_button">
-      <%= link_to 'Print', print_merchant_promo_path, :class => "btnPrint" %>
-    </div>
-    <div class="popups">
+    <table>
+	  <tr>
+		<td class="print_button">
+         <%= link_to 'Print', print_merchant_promo_path, :class => "btnPrint" %>
+        </td>
+        <td class="popups">
       <%= link_to 'Coupon Preview', print_merchant_promo_path %>
-    </div>
+        </td>
+      </tr>
+    </table>
   <% else %>
     <div class="popups">
       <%= link_to 'Coupon Preview', print_merchant_promo_path %>
+     <br />
+     <br />
     </div>
   <% end %>
 <% end %>
-
+<div class="coupon_details">
 <% if @promo.promo_valid? %>
   <% if user_signed_in? %>
     <% unless current_user.claimed?(@promo) %>
@@ -29,4 +35,4 @@
 <% else %>
   <p>Sorry! This deal cannot be claimed anymore!</p>
 <% end %>
-
+</div>

@@ -1,9 +1,10 @@
 #sidebar
   %h3 Featured Deals
-  #gallery
+  #gallery_featured
     - @featured_promos.each do |fp|
       -img = image_for_deal(fp)
       =link_to image_tag(img), [fp.merchant, fp]
+      %b#featured= "Only P#{fp.price_discounted} for #{fp.name}!"
 
   /%h3 Most Popular Deals
   /#gallery
