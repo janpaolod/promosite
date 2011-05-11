@@ -746,19 +746,28 @@ GALLERY
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 #gallery img
 {
-	width: 180px; height: 120px; padding: 1px; margin: 2px; border: 1px solid #CCC;
+	width: 290px; height: 200px; padding: 1px; margin: 2px; border: 1px solid #CCC;
 }
 
 #gallery2 img
 {
-	position: relative; width: 220px; height: 150px; padding: 1px; margin: 2px; border: 1px solid #CCC;
+    width: 290px; height: 200px; padding: 1px; margin: 2px; border: 1px solid #CCC;
 }
 
 #gallerydefault img
 {
 	width: 100px; padding: 1px; margin: 2px; border: 1px solid #CCC;
 }
+
+#gallery3 img
+{
+    width: 190px; height: 130px; padding: 1px; margin: 2px; border: 1px solid #CCC;
+}
 	
+#gallery_featured img
+{
+	width: 190px; height: 130px; padding: 1px; margin: 2px; border: 1px solid #CCC;
+}
 /* -------------------------------------------------------------
 OVERRIDES
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
