@@ -11,3 +11,4 @@ nbproject/**/*
 *.log
 public/uploads/**/*
 .rvmrc
+config/database.yml
