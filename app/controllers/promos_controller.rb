@@ -58,7 +58,7 @@ class PromosController < ApplicationController
     promo._min_period_start = Time.now
 
     def promo.valid_countdown_period_start
-      if countdown_period_start > _min_period_start
+      if countdown_period_start < _min_period_start
         errors.add(:countdown_period_start, 'must be greater than the current time')
       end
     end
@@ -72,7 +72,7 @@ class PromosController < ApplicationController
 
     if params[:activate]
       @promo.activate
-      #PromoMailer.activate(@promo).deliver
+      PromoMailer.activate(@promo).deliver
       flash[:notice] = "Deal was activated. An email was sent notifying the merchant."
     elsif params[:reject]
       @promo.reject
