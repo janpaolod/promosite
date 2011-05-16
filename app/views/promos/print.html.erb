@@ -13,7 +13,11 @@
         <table style="width: 483; border-style: dashed; border-width: 2;">
           <tr>
             <td>
-              <%= image_tag "deal.default2.png" %>
+              <% unless @promo.image.url %>
+                 <%= image_tag "deal.default2.png", :height => "80px", :weight => "80px" %>
+              <% else %>
+                 <%= image_tag @promo.image.url, :height => "80px", :weight => "80px" %>
+              <% end %>
             </td>
             <td style="width: 350; text-align: center;">
               <b>TWIGGZY COUPON</b><br />
@@ -21,9 +25,9 @@
                 </td>
                 <td>
                   <% unless @promo.merchant.image.url %>
-                    <%= image_tag "merchant.default.png" %>
+                    <%= image_tag "merchant.default.png", :height => "100px", :weight => "100px" %>
                   <% else %>
-                    <%= @promo.merchant.image.url %>
+                    <%= image_tag @promo.merchant.image.url, :height => "80px", :weight => "80px" %>
                   <% end %>
                 </td>
               </tr>
