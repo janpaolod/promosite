@@ -43,10 +43,6 @@
               %td= claim.user.email
             %td= claim.discounts
             %td= claim.manual_code
-            -#
-              %td= claim.redeemed.to_s
-              -unless claim.redeemed
-                %td= render :partial => 'redeem', :locals => {:user_id => claim.user_id}
     -else
       %strong No customer claimed this deal yet!
 -else
@@ -55,7 +51,7 @@
     = " Only P#{@promo.price_discounted} for #{@promo.name} at #{@promo.merchant.name}"
   -if @promo.image.url
     .deal-item-image-show#gallery
-      %img{:src => @promo.image.url, }
+      %img{:src => @promo.image.url}
   -else
     .deal-item-image-show#gallery2
       %img{:src => '/images/deal.default2.png'}
