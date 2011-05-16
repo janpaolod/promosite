@@ -72,7 +72,7 @@ class PromosController < ApplicationController
 
     if params[:activate]
       @promo.activate
-      #PromoMailer.activate(@promo).deliver
+      PromoMailer.activate(@promo).deliver
       flash[:notice] = "Deal was activated. An email was sent notifying the merchant."
     elsif params[:reject]
       @promo.reject
