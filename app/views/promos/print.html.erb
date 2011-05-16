@@ -36,7 +36,7 @@
                   <center style="font-size: 10;">
                     <b><%= @promo.merchant.name %></b> is exclusively offering <% @promo.promo_claims.each do |claim| %><b><u><%= claim.user.first_name %> <%= claim.user.last_name %></b></u><% end %>
                     <br />
-                    <b><%= @promo.name %></b> from the original price of <b><%= @promo.price_actual %></b> to discounted price of <b><%= @promo.price_discounted %></b>.
+                    <b><%= @promo.name %></b> from the original price of <b>P<%= @promo.price_actual %></b> to discounted price of <b>P<%= @promo.price_discounted %></b>.
                     <br />
                     <% if user_signed_in? && current_user.claimed?(@promo) %>
                       CODE: 
