@@ -475,6 +475,12 @@ td.popups{
 
 td.print_button{
 	font-size: 115%;
+	width: 40px;
+}
+
+table.popups{
+	margin-left: 15px;
+	margin-right: 15px;
 }
 
 p#remember{
