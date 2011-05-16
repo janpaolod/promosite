@@ -4,8 +4,8 @@
     = f.label :product_name
     %br
     = f.text_field :name
-  -if admin_signed_in?
-  %div{ :class => "field upload clearfix" }
+    %br
+  .field
     = f.label :image
     %br
     = f.file_field :image
