@@ -101,7 +101,7 @@ class PromosController < ApplicationController
     @promo = Promo.where(:permalink => params[:id]).first
     unless current_user.first_name.blank? && current_user.last_name.blank?
       @promo.claim!(current_user)
-      flash[:notice] = "Print the coupon and present it when you will purchasing the deal."
+      flash[:notice] = "Print the coupon and present it when you will purchase the deal."
     else
       flash[:notice] = "You can't claim a deal unless your name is complete!"
     end
