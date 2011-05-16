@@ -58,7 +58,7 @@ class PromosController < ApplicationController
     promo._min_period_start = Time.now
 
     def promo.valid_countdown_period_start
-      if countdown_period_start < _min_period_start
+      if countdown_period_start > _min_period_start
         errors.add(:countdown_period_start, 'must be greater than the current time')
       end
     end
