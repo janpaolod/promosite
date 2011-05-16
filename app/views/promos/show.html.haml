@@ -48,7 +48,8 @@
 -else
   %h3#dealnameshow
     %b 
-    = " Only P#{@promo.price_discounted} for #{@promo.name} at #{@promo.merchant.name}"
+    = " Only P#{@promo.price_discounted} for #{@promo.name} at"
+    =link_to @promo.merchant.name, :controller => "merchants", :action => "show", :id => @merchant
   -if @promo.image.url
     .deal-item-image-show#gallery
       %img{:src => @promo.image.url}
