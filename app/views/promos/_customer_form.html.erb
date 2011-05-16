@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
   <% if current_user.claimed?(@promo) %>
-    <table>
+    <table class="popups">
 	  <tr>
 		<td class="print_button">
          <%= link_to 'Print', print_merchant_promo_path, :class => "btnPrint" %>
