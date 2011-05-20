@@ -34,9 +34,9 @@
               <tr>
                 <td colspan="3">
                   <center style="font-size: 10;">
-                    <b><%= @promo.merchant.name %></b> is exclusively offering <% @promo.promo_claims.each do |claim| %><b><u><%= claim.user.first_name %> <%= claim.user.last_name %></b></u><% end %>
+                    <b><%= @promo.merchant.name %></b> is exclusively offering <% @promo.promo_claims.each do |claim| %><b><u><% if claim.user.first_name == current_user.first_name && claim.user.last_name == current_user.last_name%><%= claim.user.first_name %> <%= claim.user.last_name %></b><% end %></u><% end %>
                     <br />
-                    <b><%= @promo.name %></b> from the original price of <b>P<%= @promo.price_actual %></b> to discounted price of <b>P<%= @promo.price_discounted %></b>.
+                    <b><%= @promo.name.capitalize %></b> from the original price of <b>P<%= @promo.price_actual %></b> to discounted price of <b>P<%= @promo.price_discounted %></b>.
                     <br />
                     <% if user_signed_in? && current_user.claimed?(@promo) %>
                       CODE: 
@@ -56,7 +56,7 @@
                   &nbsp; Selected branch: 
                   <b>
                     <% @merchant.branches.each do |branch| %>
-                      <%= branch.name %>, <%= branch.address %>, <%= branch.contact_number %>
+                      <%= branch.name %>, <%= branch.address %>, <%= branch.city.name %> (tel no. <%= branch.contact_number %>),
                     <% end %>
                   </b>
                 </td>
