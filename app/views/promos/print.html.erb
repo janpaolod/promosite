@@ -34,7 +34,7 @@
               <tr>
                 <td colspan="3">
                   <center style="font-size: 10;">
-                    <b><%= @promo.merchant.name %></b> is exclusively offering <% @promo.promo_claims.each do |claim| %><b><u><% if claim.user.first_name == current_user.first_name && claim.user.last_name == current_user.last_name%><%= claim.user.first_name %> <%= claim.user.last_name %></b><% end %></u><% end %>
+                    <b><%= @promo.merchant.name %></b> is exclusively offering <% @promo.promo_claims.each do |claim| %><b><u><% if claim.user.first_name == current_user.first_name && claim.user.last_name == current_user.last_name%><%= claim.user.first_name.capitalize %> <%= claim.user.last_name.capitalize %></b><% end %></u><% end %>
                     <br />
                     <b><%= @promo.name.capitalize %></b> from the original price of <b>P<%= @promo.price_actual %></b> to discounted price of <b>P<%= @promo.price_discounted %></b>.
                     <br />
