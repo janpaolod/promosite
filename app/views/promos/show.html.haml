@@ -48,8 +48,9 @@
 -else
   %h3#dealnameshow
     %b 
-    = " Only P#{@promo.price_discounted} for #{@promo.name} at"
-    =link_to @promo.merchant.name, :controller => "merchants", :action => "show", :id => @merchant
+    - if @promo.branches.collect{ |b| b.city.name } == "Quezon City" && "Baguio City"
+      = "HI Only P#{@promo.price_discounted} for #{@promo.name} at"
+      =link_to @promo.merchant.name, :controller => "merchants", :action => "show", :id => @merchant
   -if @promo.image.url
     .deal-item-image-show#gallery
       %img{:src => @promo.image.url}
@@ -66,11 +67,11 @@
         %td#box
           %b Savings:
       %tr
-        %td#box
+        %td#box2
           %b= "P#{@promo.price_actual}"
-        %td#box
+        %td#box2
           %b= "#{@promo.percent_discounted}%"  
-        %td#box
+        %td#box2
           %b= "P#{@promo.price_actual - @promo.price_discounted}"
     %table#box
       %tr
@@ -94,10 +95,17 @@
     = @promo.details
     %p
     %b Coupon is valid on:
-    = @promo.coupon_validity_start
+    = @promo.coupon_validity_start.strftime("%B %d, %Y")
     %b Until:
-    = @promo.coupon_validity_end
+    = @promo.coupon_validity_end.strftime("%B %d, %Y")
     %br
+    %br
+    %p
+    %b Participating Branches:
+    %p
+    -@merchant.branches.each do |branch|
+      = "#{branch.name} -  #{branch.address}, #{branch.city.name}, tel. no. #{branch.contact_number}"
+      </br>
   %p#remember
     %br
     %b Remember: Print the Coupon and present it to any participating branches. 
