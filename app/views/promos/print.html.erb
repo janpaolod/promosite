@@ -52,11 +52,11 @@
               <tr>
                 <td colspan="3" style="font-size: 9;">
                   <br />
-                  &nbsp; The deal is valid only from <b><%= @promo.coupon_validity_start %></b> to <b><%= @promo.coupon_validity_end %></b>.<br />
+                  &nbsp; The deal is valid only from <b><%= @promo.coupon_validity_start.strftime("%B %d, %Y") %></b> to <b><%= @promo.coupon_validity_end.strftime("%B %d, %Y") %></b>.<br />
                   &nbsp; Selected branch: 
                   <b>
                     <% @merchant.branches.each do |branch| %>
-                      <%= branch.name %>, <%= branch.address %>, <%= branch.city.name %> (tel no. <%= branch.contact_number %>),
+                      <%= branch.name %>, <%= branch.address.capitalize %>, <%= branch.city.name.capitalize %> (tel no. <%= branch.contact_number %>),
                     <% end %>
                   </b>
                 </td>
