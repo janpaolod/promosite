@@ -72,7 +72,7 @@ class PromosController < ApplicationController
 
     if params[:activate]
       @promo.activate
-      PromoMailer.activate(@promo).deliver
+      #PromoMailer.activate(@promo).deliver
       flash[:notice] = "Deal was activated. An email was sent notifying the merchant."
     elsif params[:reject]
       @promo.reject
@@ -162,4 +162,5 @@ class PromosController < ApplicationController
     return true if admin_signed_in? || merchant_signed_in?
     authenticate_merchant!
   end
+  
 end
