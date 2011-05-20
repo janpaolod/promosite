@@ -1,5 +1,5 @@
 class PromoMailer < ActionMailer::Base
-  default :from => "admin@filsale.com"
+  default :from => "admin@twiggzy.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
