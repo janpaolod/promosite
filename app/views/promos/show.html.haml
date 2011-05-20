@@ -48,9 +48,8 @@
 -else
   %h3#dealnameshow
     %b 
-    - if @promo.branches.collect{ |b| b.city.name } == "Quezon City" && "Baguio City"
-      = "HI Only P#{@promo.price_discounted} for #{@promo.name} at"
-      =link_to @promo.merchant.name, :controller => "merchants", :action => "show", :id => @merchant
+    = "Only P#{@promo.price_discounted} for #{@promo.name.capitalize} at"
+    =link_to @promo.merchant.name, :controller => "merchants", :action => "show", :id => @merchant
   -if @promo.image.url
     .deal-item-image-show#gallery
       %img{:src => @promo.image.url}
@@ -104,7 +103,7 @@
     %b Participating Branches:
     %p
     -@merchant.branches.each do |branch|
-      = "#{branch.name} -  #{branch.address}, #{branch.city.name}, tel. no. #{branch.contact_number}"
+      = "#{branch.name.capitalize} -  #{branch.address.capitalize}, #{branch.city.name}"
       </br>
   %p#remember
     %br
