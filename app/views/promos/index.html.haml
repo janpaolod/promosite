@@ -8,7 +8,7 @@
   =will_paginate
   -@promos.each do |deal|
     .deal-item
-      %h3#dealname=link_to "Only P#{deal.price_discounted} for #{deal.name} at #{deal.merchant.name}", [deal.merchant, deal]
+      %h3#dealname=link_to "Only P#{deal.price_discounted} for #{deal.name.capitalize} at #{deal.merchant.name.capitalize}", [deal.merchant, deal]
       .deal-index.round  
         %table#box
           %tr
