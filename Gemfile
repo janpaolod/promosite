@@ -5,7 +5,7 @@ gem 'rails', '>= 3.0.5'
 gem "mongoid", "2.0.0.beta.20"
 gem "bson_ext"
 
-gem "rake", "0.8.7"
+gem 'rake', '0.8.7'
 
 gem 'devise', '> 1.1.3'
 
