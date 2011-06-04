@@ -17,6 +17,7 @@ gem 'will_paginate'
 
 group :production do
   gem 'fog'
+  gem 'mysql'
 end
 
 group :development, :test do
