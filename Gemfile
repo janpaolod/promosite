@@ -8,7 +8,7 @@ gem "bson_ext"
 gem 'devise', '> 1.1.3'
 
 gem 'carrierwave'
-gem 'mini_magick', :git => 'git://github.com/probablycorey/mini_magick.git'
+gem 'mini_magick'
 
 gem 'haml'
 gem 'will_paginate'
