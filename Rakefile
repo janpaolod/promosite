@@ -4,8 +4,6 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Promosite::Application.load_tasks
-
 module ::YourApplicationName
   class Application
     include Rake::DSL
@@ -15,3 +13,6 @@ end
 module ::RakeFileUtils
   extend Rake::FileUtilsExt
 end
+
+Promosite::Application.load_tasks
+

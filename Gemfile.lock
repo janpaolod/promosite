@@ -144,7 +144,6 @@ DEPENDENCIES
   mysql
   rails (>= 3.0.5)
   rails3-generators
-  rake (= 0.8.7)
   rspec-rails
   spork
   webrat (= 0.7.1)
