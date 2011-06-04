@@ -3,7 +3,7 @@
 development:
   adapter: mysql
   database: twiggzy_development
-  username: twiggzy11@gmail.com
+  username: root
   password: morepromos
 
 # Warning: The database defined as "test" will be erased and
@@ -12,11 +12,11 @@ development:
 test:
   adapter: mysql
   database: twiggzy_test
-  username: twiggzy11@gmail.com
+  username: root
   password: morepromos
 
 production:
   adapter: mysql
   database: twiggzy_production
-  username: twiggzy11@gmail.com
+  username: root
   password: morepromos
