@@ -1,9 +1,3 @@
-GIT
-  remote: git://github.com/probablycorey/mini_magick.git
-  revision: 4395c970418591eace74ed809050b0cc7246a285
-  specs:
-    mini_magick (3.2)
-      subexec (~> 0.0.4)
 
 GEM
   remote: http://rubygems.org/
@@ -73,6 +67,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    mini_magick (3.2)
     mongo (1.3.1)
       bson (>= 1.3.1)
     mongoid (2.0.0.beta.20)
