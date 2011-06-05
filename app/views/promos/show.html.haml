@@ -85,7 +85,9 @@
       %tr
         %td  
         -if @promo.promo_valid? 
-          = "#{@promo.remaining} coupons left"  
+          = "#{@promo.remaining} coupons left"
+        -else
+          Deal is done!  
   %br
   %br
   %h3#details
