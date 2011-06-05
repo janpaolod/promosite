@@ -220,7 +220,7 @@ class Promo
   end
 
   def valid_countdown_period_start
-    if countdown_period_start > _min_period_start
+    if countdown_period_start < _min_period_start
       errors.add(:countdown_period_start, 'must be at least 1 day from now')
     end
   end
@@ -235,8 +235,8 @@ class Promo
   end
 
   def valid_coupon_validity_start
-    if coupon_validity_start != min_max_validity_start
-      errors.add(:coupon_validity_start, 'must be the very next day after promo countdown start')
+    if coupon_validity_start < min_max_validity_start
+      errors.add(:coupon_validity_start, 'must be at least next day after promo countdown end')
     end
   end
   
@@ -254,7 +254,7 @@ public
   end
 
   def min_max_validity_start
-    (countdown_period_start + 1.day).to_date if countdown_period_start
+    (countdown_period_end + 1.day).to_date if countdown_period_end
   end
 
   def min_validity_end
