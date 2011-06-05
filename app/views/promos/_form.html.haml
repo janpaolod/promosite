@@ -19,7 +19,7 @@
     = f.label :code
     %br
     = f.text_field :manual_code
-
+  Countdown Start must be at least 1 day from now. Countdown Period: 4 hours to 3 days.
   .field.clearfix
     .alignLeft
       = f.label(:period_start, "Countdown start")
@@ -30,6 +30,7 @@
       = f.label( :period_end, "Countdown end")
       %br
       =  f.text_field :period_end, :class => "ui-date-picker"
+
   .field.clearfix
     .alignLeft
       = f.label( :coupon_validity_start, "Coupon validity start")
