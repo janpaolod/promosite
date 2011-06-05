@@ -4,10 +4,14 @@
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put,:class => "form label-top" }) do |f| %>
 
     <% if params[:new] %>
-      <%= render :partial => 'devise/registrations/name_form', :locals => {:f => f} %>
+    <%= render :partial => 'devise/registrations/name_form', :locals => {:f => f} %>
       <% if user_signed_in? %>
         <%= render :partial => 'devise/registrations/user_details_form', :locals => {:f => f} %>
       <% end %>
+    <div class="field">
+        <%= f.label :current_password %><i>(required if name is being updated)</i><br />
+        <%= f.password_field :current_password %>
+    </div>
 
     <% elsif params[:password]%>
       <%= render :partial => 'devise/registrations/password_form', :locals => {:f => f} %>
