@@ -88,7 +88,7 @@ describe Promo do
     end
 
     context "Coupon validity" do
-      it "must be on the following day after countdown period ends" do
+      it "must be at least the next day after countdown period ends" do
         p = Promo.new @attr
         p.coupon_validity_start = p.countdown_period_end + 1.day
         p.should be_valid
