@@ -20,3 +20,4 @@ production:
   port: <%= ENV['MONGOID_PORT'] %>
   username: <%= ENV['MONGOID_USERNAME'] %>
   password: <%= ENV['MONGOID_PASSWORD'] %>
+  database: <%= ENV['MONGOID_DATABASE'] %>
