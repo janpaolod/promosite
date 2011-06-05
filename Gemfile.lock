@@ -75,7 +75,6 @@ GEM
       mongo (~> 1.1)
       tzinfo (~> 0.3.22)
       will_paginate (~> 3.0.pre)
-    mysql (2.8.1)
     net-ssh (2.1.4)
     nokogiri (1.4.4)
     orm_adapter (0.0.5)
@@ -141,7 +140,6 @@ DEPENDENCIES
   haml
   mini_magick
   mongoid (= 2.0.0.beta.20)
-  mysql
   rails (>= 3.0.5)
   rails3-generators
   rspec-rails

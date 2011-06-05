@@ -5,8 +5,6 @@ gem 'rails', '>= 3.0.5'
 gem "mongoid", "2.0.0.beta.20"
 gem "bson_ext"
 
-gem 'mysql'
-
 gem 'devise', '> 1.1.3'
 
 gem 'carrierwave'
