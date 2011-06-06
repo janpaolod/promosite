@@ -1,4 +1,3 @@
 engine=rails3
 addons=(mongodb)
 skipdb=true
-dns_alias='www.twiggzy.com'
