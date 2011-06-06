@@ -18,8 +18,8 @@ Promosite::Application.configure do
     :port => '25',
     :domain => "twiggzy.com",
     :authentication => :plain,
-    :user_name => "janpaolod@gmail.com",
-    :password => "morepromos"
+    :user_name => "twiggzy11@gmail.com",
+    :password => "promosinfo"
   }
 
   # Full error reports are disabled and caching is turned on
