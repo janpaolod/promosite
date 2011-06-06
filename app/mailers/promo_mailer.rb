@@ -1,4 +1,11 @@
-class PromoMailer < ActionMailer::Base
+class PromoMailer < ActionMailer::Base.smtp_settings = {
+  :address => "smtp.gmail.com",
+  :port => "587",
+  :domain => "twiggzy.com",
+  :authentication => :plain,
+  :user_name => "info@twiggzy.com",
+  :password => "promosinfo"
+}
   default :from => "Twiggzy Team <admin@twiggzy.com>"
 
   # Subject can be set in your I18n file at config/locales/en.yml
