@@ -16,7 +16,7 @@ end
 def create_merchant(name, iterator, business_types)
   @details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam varius massa sed quam eleifend venenatis. Mauris feugiat nunc massa. Nullam et volutpat enim. Aliquam erat volutpat. Morbi consectetur tempus tellus, posuere diam mollis quis volutpat."
   
-  m = Merchant.create!(:email => "merchant#{iterator}@filsale.com", :password => 'foobar', :name => name, :info => @details)
+  m = Merchant.create!(:email => "merchant#{iterator}@twiggzy.com", :password => 'foobar', :name => name, :info => @details)
   m.set_classifications( business_types )
   m.branches.create!(:name => "#{m.name} in Libis", :address => '123 Somewhere in Libis', :city => City.where(:name => 'Quezon City').first, :contact_number => '123-4567')
   m
@@ -39,13 +39,13 @@ def create_promo(merchant, status, featured, classifications)
   p
 end
 
-puts "Creating Admin: admin@filsale.com foobar"
-Admin.create!(:email => 'admin@filsale.com', :password => 'foobar')
+puts "Creating Admin: admin@twiggzy.com foobar"
+Admin.create!(:email => 'admin@twiggzy.com', :password => 'foobar')
 
 puts "Creating User: user@filsale.com foobar"
-User.create!(:first_name => 'Ufirst', :last_name => 'Ulast', :email => 'user@filsale.com', :password => 'foobar', :agree => true)
+User.create!(:first_name => 'Ufirst', :last_name => 'Ulast', :email => 'user@twiggzy.com', :password => 'foobar', :agree => true)
 
-puts "Creating Merchant: merchant@filsale.com foobar"
+puts "Creating Merchant: merchant@twiggzy.com foobar"
 classifications = Classification.all
 merchant = create_merchant('Default Merchant', nil, classifications)
 puts "Creating promos for merchant"
