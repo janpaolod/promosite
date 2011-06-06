@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def load_sidebar_data
-    @featured_promos = Promo.where(:featured => true).limit(6)
+    @featured_promos = Promo.where(:featured => true).limit(1)
   end
 
   def after_sign_in_path_for(resource)
