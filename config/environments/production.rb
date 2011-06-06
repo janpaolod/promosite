@@ -5,7 +5,7 @@ Promosite::Application.configure do
   # Code is not reloaded between requests
   config.cache_classes = true
 
-  config.action_mailer.default_url_options = { :host => 'filsale.heroku.com' }
+  config.action_mailer.default_url_options = { :host => 'www.twiggzy.com' }
   ### ActionMailer Config
   ## Setup for production - deliveries, no errors raised
   config.action_mailer.delivery_method = :smtp
