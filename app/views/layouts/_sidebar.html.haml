@@ -1,10 +1,21 @@
 #sidebar
-  %h3 Featured Deals
-  #gallery_featured
-    - @featured_promos.each do |fp|
-      -img = image_for_deal(fp)
-      =link_to image_tag(img), [fp.merchant, fp]
-      %b#featured= "Only P#{fp.price_discounted} for #{fp.name}!"
+ - @featured_promos.each do |fp|
+  -if fp.promo_valid? 
+   %h3 Featured Deals
+   #gallery_featured
+    -img = image_for_deal(fp)
+    =link_to image_tag(img), [fp.merchant, fp]
+    %b#featured= "Only P#{fp.price_discounted} for #{fp.name}!"
+  -else
+   %h3 Feature your Business!
+   #gallery_featured
+    %p
+    %b#featured Give your Business a Boost 
+    %br
+    %b#featured2 Just Sign Up as a Merchant and 
+    %br
+    %b#featured2 Create your Deals!
+        
 
   /%h3 Most Popular Deals
   /#gallery
