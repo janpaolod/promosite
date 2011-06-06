@@ -14,12 +14,13 @@ Promosite::Application.configure do
   config.action_mailer.default :charset => "utf-8"
   
   ActionMailer::Base.smtp_settings = {
-    :address => "smtp.sendgrid.net",
-    :port => '25',
-    :domain => "twiggzy.com",
-    :authentication => :plain,
     :user_name => "twiggzy11@gmail.com",
-    :password => "promosinfo"
+    :password => "promosinfo",
+    :domain => "twiggzy.com",
+    :address => "smtp.sendgrid.net",
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
   }
 
   # Full error reports are disabled and caching is turned on
