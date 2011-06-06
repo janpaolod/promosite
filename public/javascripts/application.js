@@ -37,7 +37,8 @@ $(function (){
 
     $('#promo_coupon_validity_start').datepicker({
         dateFormat: 'yy-mm-dd',
-        beforeShow: ValidDate
+        numberOfMonths: 1,
+        beforeShow: ValidityDate
     });
 
     $('#promo_start, #promo_coupon_validity_end').datepicker({
@@ -56,9 +57,17 @@ $(function (){
         }
     }
 
+    function ValidityDate(a) {
+        var b = new Date($('#promo_coupon_validity_start').datepicker("getDate"));
+        var c = new Date(b.getFullYear(), b.getMonth(), b.getDate()+0);
+        return {
+            minDate: c
+        }
+    }
+
     function ValidityRange(a) {
         var b = new Date($('#promo_coupon_validity_start').datepicker("getDate"));
-        var c = new Date(b.getFullYear(), b.getMonth(), b.getDate()+1);
+        var c = new Date(b.getFullYear(), b.getMonth(), b.getDate()+2);
         return {
             minDate: c
         }
