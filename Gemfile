@@ -10,6 +10,8 @@ gem 'devise', '> 1.1.3'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem 'sendgrid'
+
 gem 'haml'
 gem 'will_paginate'
 
