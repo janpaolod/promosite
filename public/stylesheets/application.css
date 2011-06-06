@@ -495,7 +495,14 @@ b#remember{
 
 b#featured{
 	color: #a5073d;
-	font-size: 125%;
-	text-align: center;
+	font-size: 106%;
+	text-align: left;
+	margin-left: 5px;
+}
+
+b#featured2{
+	color: #a5073d;
+	font-size: 106%;
+	text-align: left;
 	margin-left: 5px;
 }
