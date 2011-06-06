@@ -12,15 +12,6 @@ Promosite::Application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"
-  
-  config.action_mailer.server_settings = {
-    :address        => "smtp.gmail.com",
-    :port           => 587,
-    :domain         => "twiggzy.com",
-    :authentication => :plain,
-    :user_name      => "info@twiggzy.com",
-    :password       => "promosinfo"
-    }
 
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
